@@ -22,9 +22,20 @@
 //     p.style.color="green";
 // });
 
-let inp = document.querySelector("input")
-inp.addEventListener("input",function(del){
-    if (del.data !==null){
-        console.log(del.data);
-    };
+// let inp = document.querySelector("input")
+// inp.addEventListener("input",function(del){
+//     if (del.data !==null){
+//         console.log(del.data);
+//     };
+// });
+
+let sel= document.querySelector("select");
+let device=document.querySelector("#device");
+
+sel.addEventListener("change",function(dets){
+    // console.log(dets.target.value);
+    // device.textContent="Device selected"
+    device.textContent =`${dets.target.value} Device selected `;
+
+
 });
