@@ -11,3 +11,13 @@
 
 // let a = document.querySelector("a");
 // a.getAttribute("href");
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", () => {
+  alert("Button Clicked!");
+});
+
+let p = document.querySelector("p");
+p.addEventListener("click",function (){
+    p.style.color="green";
+});
