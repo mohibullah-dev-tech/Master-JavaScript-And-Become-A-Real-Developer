@@ -32,10 +32,17 @@
 let sel= document.querySelector("select");
 let device=document.querySelector("#device");
 
-sel.addEventListener("change",function(dets){
-    // console.log(dets.target.value);
-    // device.textContent="Device selected"
-    device.textContent =`${dets.target.value} Device selected `;
+// sel.addEventListener("change",function(dets){
+//     // console.log(dets.target.value);
+//     // device.textContent="Device selected"
+//     device.textContent =`${dets.target.value} Device selected `;
 
 
+// });
+
+let inp= document.querySelector("input");
+let span= document.querySelector("span");
+
+inp.addEventListener("input",function (){
+    span.textContent=inp.value.length;
 });
