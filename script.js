@@ -40,18 +40,92 @@ let device=document.querySelector("#device");
 
 // });
 
-let inp= document.querySelector("input");
-let span= document.querySelector("span");
+// let inp= document.querySelector("input");
+// let span= document.querySelector("span");
 
-inp.addEventListener("input",function (){
-    // span.textContent=inp.value.length;
-    let left = 20 - inp.value.length;
-    span.textContent  = left;
+// inp.addEventListener("input",function (){
+//     // span.textContent=inp.value.length;
+//     let left = 20 - inp.value.length;
+//     span.textContent  = left;
 
-    if (left< 0){
-        span.style.color ="red";
+//     if (left< 0){
+//         span.style.color ="red";
+//     }
+//     else{
+//         span.style.color ="black";
+//     }
+// });
+
+const timerDisplay = document.getElementById("timer");
+const startBtn = document.getElementById("start");
+const pauseBtn = document.getElementById("pause");
+const resetBtn = document.getElementById("reset");
+const message = document.getElementById("message");
+
+let time = 25 * 60; // 25 minutes
+let intervalId = null;
+
+// display update function
+function updateTimer() {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+
+  timerDisplay.textContent =
+    `${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+}
+
+// start timer
+startBtn.addEventListener("click", () => {
+
+  if(intervalId) return;
+
+  intervalId = setInterval(() => {
+
+    time--;
+
+    updateTimer();
+
+    if(time <= 0){
+
+      clearInterval(intervalId);
+
+      intervalId = null;
+
+      message.textContent = "Study Session Completed!";
+
+      // clear message after 5 sec
+      setTimeout(() => {
+        message.textContent = "";
+      },5000);
+
     }
-    else{
-        span.style.color ="black";
-    }
+
+  },1000);
+
 });
+
+// pause timer
+pauseBtn.addEventListener("click", () => {
+
+  clearInterval(intervalId);
+
+  intervalId = null;
+
+});
+
+// reset timer
+resetBtn.addEventListener("click", () => {
+
+  clearInterval(intervalId);
+
+  intervalId = null;
+
+  time = 25 * 60;
+
+  updateTimer();
+
+  message.textContent = "";
+
+});
+
+updateTimer();
